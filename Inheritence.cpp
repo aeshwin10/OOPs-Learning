@@ -8,6 +8,9 @@ private:
 	string Company;
 	int Age;
 
+// protected:
+// 	string Name;   Now, I will be able to access Name directly without getters in my child classes aswell
+
 public:
 	void setName(string name){  
 		Name = name;
@@ -46,10 +49,13 @@ public:
 	}
 };
 
-class Developer: Employee{
+class Developer: Employee{    // use ':' <base_class_name> to inherit from the base class. Developer is now a sub-class. 
+//Use public keyword before <base_class_name> will make all the methods of employee available for the developer object in main
 public:
 	string FavProgrammingLanguage;
-	Developer(int age, string name, string company,  string favProgrammingLanguage) : Employee(name, company, age){
+//since we have inherited from employee for which we have created our own constructor, now we do not have any default constructor 
+//for this class aswell, that's why we have created it. It is also called parameterized base constructor
+	Developer(int age, string name, string company,  string favProgrammingLanguage) : Employee(name, company, age){  //mapping: Employee here and Empolyee constructor -> position. Dev here and Employee here -> name
 		FavProgrammingLanguage = favProgrammingLanguage;
 	}
 	void FixBug(){
